@@ -1,1 +1,1 @@
-realizar las historias de usuario poner en PDF
+realizar las historias de usuario en trello
