@@ -21,7 +21,7 @@ PRIMARY KEY (idSala));
 /*TABLA TEMA*/
 CREATE TABLE tema( 
 idTema INT NOT NULL AUTO_INCREMENT,
-descripcionTema LONGTEXT NOT NULL,
+descripcionTema varchar(140) NOT NULL,
 imagenTema LONGBLOB,
 idSala INT NOT NULL,
 idUsuario INT NOT NULL,
