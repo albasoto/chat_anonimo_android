@@ -7,57 +7,57 @@ USE db_chat;
 
 /*TABLA USUARIO*/
 CREATE TABLE usuario( 
-idUsuario INT NOT NULL AUTO_INCREMENT, 
+id INT NOT NULL AUTO_INCREMENT, 
 username varchar(10) NOT NULL UNIQUE, 
 password varchar(20) NOT NULL,
 PRIMARY KEY (idUsuario)); 
 
 /*TABLA SALA*/
-CREATE TABLE sala( 
-idSala INT NOT NULL AUTO_INCREMENT, 
-nombreSala varchar(30) NOT NULL UNIQUE, 
-PRIMARY KEY (idSala)); 
+CREATE TABLE tipoTema( 
+id INT NOT NULL AUTO_INCREMENT, 
+nombre varchar(30) NOT NULL UNIQUE, 
+PRIMARY KEY (id)); 
 
 /*TABLA TEMA*/
 CREATE TABLE tema( 
-idTema INT NOT NULL AUTO_INCREMENT,
-descripcionTema varchar(140) NOT NULL,
-imagenTema LONGBLOB,
-idSala INT NOT NULL,
-idUsuario INT NOT NULL,
-PRIMARY KEY (idTema)); 
+id INT NOT NULL AUTO_INCREMENT,
+descripcion varchar(140) NOT NULL,
+imagen LONGBLOB,
+tipoTema INT NOT NULL,
+Usuario INT NOT NULL,
+PRIMARY KEY (id)); 
 
 /*TABLA COMENTARIO*/
-CREATE TABLE comentario( 
-idComentario INT NOT NULL AUTO_INCREMENT,
-descripcionComentario LONGTEXT NOT NULL,
-imagenComentario LONGBLOB,
-idUsuario INT NOT NULL,
-idTema INT NOT NULL,
-PRIMARY KEY (idComentario));
+CREATE TABLE mensaje( 
+id INT NOT NULL AUTO_INCREMENT,
+descripcion LONGTEXT NOT NULL,
+imagen LONGBLOB,
+Usuario INT NOT NULL,
+Tema INT NOT NULL,
+PRIMARY KEY (id));
 
 /*CLAVE FORANEA USUARIO EN TEMA*/
 ALTER TABLE tema
 ADD CONSTRAINT FK_idUsuario
-FOREIGN KEY (idUsuario)
-REFERENCES usuario(idUsuario);
+FOREIGN KEY (Usuario)
+REFERENCES usuario(Usuario);
 
 /*CLAVE FORANEA SALA EN TEMA*/
 ALTER TABLE tema
-ADD CONSTRAINT FK_idSala
-FOREIGN KEY (idSala)
-REFERENCES sala(idSala);
+ADD CONSTRAINT FK_tipoTema
+FOREIGN KEY (tipoTema)
+REFERENCES sala(tipoTema);
 
 /*CLAVE FORANEA TEMA EN COMENTARIO*/
-ALTER TABLE comentario
+ALTER TABLE mensaje
 ADD CONSTRAINT FK_idTema
-FOREIGN KEY (idTema)
-REFERENCES tema(idTema);
+FOREIGN KEY (Tema)
+REFERENCES tema(Tema);
 
 /*CLAVE FORANEA USUARIO EN COMENTARIO*/
-ALTER TABLE comentario
-ADD CONSTRAINT FK_idUsuarioComentario
-FOREIGN KEY (idUsuario)
-REFERENCES usuario(idUsuario);
+ALTER TABLE mensaje
+ADD CONSTRAINT FK_UsuarioMensaje
+FOREIGN KEY (Usuario)
+REFERENCES usuario(Usuario);
 
 
