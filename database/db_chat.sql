@@ -46,7 +46,7 @@ REFERENCES usuario(Usuario);
 ALTER TABLE tema
 ADD CONSTRAINT FK_tipoTema
 FOREIGN KEY (tipoTema)
-REFERENCES sala(tipoTema);
+REFERENCES tipoTema(tipoTema);
 
 /*CLAVE FORANEA TEMA EN COMENTARIO*/
 ALTER TABLE mensaje
