@@ -5,12 +5,13 @@ COLLATE utf8_general_ci;
 
 USE db_chat;
 
+
 /*TABLA USUARIO*/
 CREATE TABLE usuario( 
 id INT NOT NULL AUTO_INCREMENT, 
 username varchar(10) NOT NULL UNIQUE, 
 password varchar(20) NOT NULL,
-PRIMARY KEY (idUsuario)); 
+PRIMARY KEY (id)); 
 
 /*TABLA SALA*/
 CREATE TABLE tipoTema( 
@@ -40,24 +41,24 @@ PRIMARY KEY (id));
 ALTER TABLE tema
 ADD CONSTRAINT FK_idUsuario
 FOREIGN KEY (Usuario)
-REFERENCES usuario(Usuario);
+REFERENCES usuario(id);
 
 /*CLAVE FORANEA SALA EN TEMA*/
 ALTER TABLE tema
 ADD CONSTRAINT FK_tipoTema
 FOREIGN KEY (tipoTema)
-REFERENCES tipoTema(tipoTema);
+REFERENCES tipoTema(id);
 
 /*CLAVE FORANEA TEMA EN COMENTARIO*/
 ALTER TABLE mensaje
 ADD CONSTRAINT FK_idTema
 FOREIGN KEY (Tema)
-REFERENCES tema(Tema);
+REFERENCES tema(id);
 
 /*CLAVE FORANEA USUARIO EN COMENTARIO*/
 ALTER TABLE mensaje
 ADD CONSTRAINT FK_UsuarioMensaje
 FOREIGN KEY (Usuario)
-REFERENCES usuario(Usuario);
+REFERENCES usuario(id);
 
 
